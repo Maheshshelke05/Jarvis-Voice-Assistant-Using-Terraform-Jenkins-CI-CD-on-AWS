@@ -317,25 +317,26 @@ Code Change → GitHub Push → Jenkins Auto Trigger → Deploy on EC2 → Jarvi
 ## 📷 Project Screenshots
 
 ### 🛠️ Terraform Resources Created Successfully
-![Terraform Apply Output](Img/terraform-success.png)
+![Terraform Apply Output](img/terraform-success.png)
 
 ### 🔐 AWS EC2 Instances Running
-![EC2 Instances](Img/ec2-running.png)
+![EC2 Instances](img/ec2-running.png)
 
 ### 🚀 Jenkins Pipeline Console Output (Successful Build)
-![Jenkins Console Output](Img/jenkins-build.png)
+![Jenkins Console Output](img/jenkins-build.png)
 
 ### 🌍 GitHub Repo with Jenkinsfile + Code
-![GitHub Repo Screenshot](Img/github-repo.png)
+![GitHub Repo Screenshot](img/github-repo.png)
 
 ### 🔔 GitHub Webhook Configured
-![Webhook Configuration](Img/github-webhook.png)
+![Webhook Configuration](img/github-webhook.png)
 
 ### ⚙️ Jenkinsfile in VS Code
-![Jenkinsfile VSCode](Img/jenkinsfile.png)
+![Jenkinsfile VSCode](img/jenkinsfile.png)
 
 ### 📡 Terraform Outputs (Public IPs)
-![Terraform Output](Img/terraform-ip-output.png)
+![Terraform Output](img/terraform-ip-output.png)
+
 
 ---
 
