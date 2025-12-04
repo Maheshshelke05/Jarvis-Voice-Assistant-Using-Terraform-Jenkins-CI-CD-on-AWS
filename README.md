@@ -314,77 +314,28 @@ Code Change → GitHub Push → Jenkins Auto Trigger → Deploy on EC2 → Jarvi
 | **Background Service (systemd)** | Jarvis always running, auto restart |
 
 ---
-## 📸✨ Automated CI/CD Deployment — Screenshots Gallery
+## 📷 Project Screenshots
 
-A single, clean animated showcase demonstrating a fully automated pipeline 🚀  
-Scroll & hover to experience animation ✨👇
+### 🛠️ Terraform Resources Created Successfully
+![Terraform Apply Output](Images/terraform-success.png)
 
-<style>
-.box-container {
-  background: #0b0f17;
-  border-radius: 18px;
-  padding: 25px 20px;
-  box-shadow: 0 0 30px #00fff255;
-  width: 95%;
-  max-width: 1150px;
-  margin: auto;
-  border: 1.5px solid #00e5ff55;
-}
+### 🔐 AWS EC2 Instances Running
+![EC2 Instances](Images/ec2-running.png)
 
-@keyframes slideIn {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+### 🚀 Jenkins Pipeline Console Output (Successful Build)
+![Jenkins Console Output](Images/jenkins-build.png)
 
-.sshot {
-  width: 92%;
-  border-radius: 16px;
-  margin: 18px auto;
-  display: block;
-  animation: slideIn 0.9s ease-out forwards;
-  transition: transform .35s ease, box-shadow .35s ease;
-  box-shadow: 0 0 15px #00f0ff55;
-}
+### 🌍 GitHub Repo with Jenkinsfile + Code
+![GitHub Repo Screenshot](Images/github-repo.png)
 
-.sshot:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #00ffe0aa;
-}
+### 🔔 GitHub Webhook Configured
+![Webhook Configuration](Images/github-webhook.png)
 
-.caption {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: -10px;
-  margin-bottom: 25px;
-  text-align: center;
-  color: #00ffe6;
-}
-</style>
+### ⚙️ Jenkinsfile in VS Code
+![Jenkinsfile VSCode](Images/jenkinsfile.png)
 
-<div class="box-container">
-
-<img class="sshot" src="Img/terraform-success.png"/>
-<div class="caption">🛠️ Terraform — AWS Infra Successfully Created</div>
-
-<img class="sshot" src="Img/ec2-running.png"/>
-<div class="caption">🔐 EC2 Instances Running Smoothly</div>
-
-<img class="sshot" src="Img/jenkins-build.png"/>
-<div class="caption">🚀 Jenkins — CI/CD Pipeline Success</div>
-
-<img class="sshot" src="Img/github-repo.png"/>
-<div class="caption">📂 GitHub Repo — Code + Jenkinsfile Integrated</div>
-
-<img class="sshot" src="Img/github-webhook.png"/>
-<div class="caption">🔔 Webhook — Auto Trigger on Push</div>
-
-<img class="sshot" src="Img/jenkinsfile.png"/>
-<div class="caption">🧑‍💻 Jenkinsfile Used for Auto Deployment</div>
-
-<img class="sshot" src="Img/terraform-ip-output.png"/>
-<div class="caption">🌐 Terraform Outputs — Jenkins & Jarvis Public IPs</div>
-
-</div>
+### 📡 Terraform Outputs (Public IPs)
+![Terraform Output](Images/terraform-ip-output.png)
 
 ---
 
