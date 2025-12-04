@@ -1,0 +1,78 @@
+pipeline {
+    agent any
+
+    environment {
+        REMOTE_USER = "ubuntu"
+        REMOTE_HOST = "172.31.8.240"   // <-- Change This Only
+        REMOTE_DIR  = "/home/ubuntu/Jarvis-Desktop-Voice-Assistant"
+        SERVICE_NAME = "jarvis"
+        CRED_ID = "devops-key"   // SSH Key Credential ID
+        SSH_OPTS = "-o StrictHostKeyChecking=no"
+    }
+
+    stages {
+
+        stage("Checkout Code") {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Maheshshelke05/Jarvis-Desktop-Voice-Assistant.git'
+            }
+        }
+
+        stage("Fix Permissions on Server") {
+            steps {
+                sshagent (credentials: ["${CRED_ID}"]) {
+                    sh """
+                    ssh ${SSH_OPTS} ${REMOTE_USER}@${REMOTE_HOST} '
+                        sudo mkdir -p ${REMOTE_DIR}
+                        sudo chown -R ubuntu:ubuntu ${REMOTE_DIR}
+                        sudo chmod -R 755 ${REMOTE_DIR}
+                    '
+                    """
+                }
+            }
+        }
+
+        stage("Deploy Code via rsync") {
+            steps {
+                sshagent (credentials: ["${CRED_ID}"]) {
+                    sh """
+                    rsync -avz -e "ssh ${SSH_OPTS}" \
+                    --exclude='.git' \
+                    --exclude='__pycache__' \
+                    ./ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}/
+                    """
+                }
+            }
+        }
+
+        stage("Install Dependencies") {
+            steps {
+                sshagent (credentials: ["${CRED_ID}"]) {
+                    sh """
+                    ssh ${SSH_OPTS} ${REMOTE_USER}@${REMOTE_HOST} '
+                        sudo apt update -y
+                        sudo apt install -y python3 python3-pip ffmpeg
+                        cd ${REMOTE_DIR}
+                        pip3 install -r requirements.txt --break-system-packages || true
+                    '
+                    """
+                }
+            }
+        }
+
+        stage("Restart Jarvis Service") {
+            steps {
+                sshagent (credentials: ["${CRED_ID}"]) {
+                    sh """
+                    ssh ${SSH_OPTS} ${REMOTE_USER}@${REMOTE_HOST} '
+                        sudo systemctl daemon-reload
+                        sudo systemctl restart ${SERVICE_NAME}
+                        sudo systemctl status ${SERVICE_NAME} --no-pager
+                    '
+                    """
+                }
+            }
+        }
+    }
+}
